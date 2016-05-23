@@ -1,0 +1,19 @@
+.tab_title{
+	font-weight:bold;
+}
+
+.myTabs .tab-pane{
+	border: solid 1px #DDDDDD;
+	border-top: 0;	
+	background-color:#FCFCFC;
+	padding: 12px;
+}
+
+#myTabs li a{
+	background-color: #CCCCCC;
+}
+
+#myTabs li.active a{
+	border-bottom-color: transparent;
+	background-color: #FCFCFC;
+}
