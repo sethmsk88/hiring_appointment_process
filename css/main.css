@@ -17,3 +17,23 @@
 	border-bottom-color: transparent;
 	background-color: #FCFCFC;
 }
+
+
+
+/** CSS to make dropdown look correct in nav-bar **/
+.navbar-nav > li > .dropdown > a {
+	padding: 15px;
+	color: #fff;
+	display: block;
+}
+.nav .open > a, .nav .open > a:focus,
+.nav .open > a:hover {
+    background-color: #b1441d;
+    text-decoration: none;
+}
+
+.note{
+	color:#FF1919;
+	font-style:italic;
+}
+
