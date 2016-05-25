@@ -13,19 +13,19 @@
 			<div class="tab-content myTabs">
 				<div id="ops-tab" class="tab-pane fade in active" style="line-height:2.75em;">
 					<a
-						href=""
+						href="./uploads/process_steps/process_steps.pdf"
 						target="_blank"
 						class="btn btn-primary">
 						Process Steps
 					</a><br />
 					<a
-						href=""
+						href="./uploads/forms/OPS_forms.zip"
 						target="_blank"
 						class="btn btn-primary">
 						Forms
 					</a><br />
 					<a
-						href=""
+						href="./uploads/checklist/checklist.pdf"
 						target="_blank"
 						class="btn btn-primary">
 						Checklist

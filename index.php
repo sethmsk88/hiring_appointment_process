@@ -1,5 +1,5 @@
 <?php
-	define("APP_NAME", "Hiring/Appointment Process");
+	define("APP_NAME", "Hiring / Appointment Process");
 	define("APP_PATH", "http://" . $_SERVER['HTTP_HOST'] . "./bootstrap/apps/hiring_appointment_process/");
     define("APP_HOMEPAGE", "homepage");
 

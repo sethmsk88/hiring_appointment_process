@@ -3,9 +3,9 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<h3>Update Files</h3>
+			<span class="light-text">Select the Pay Plan for which you would like to upload files.</span>
 		</div>
 	</div>
-
 	<br />
 
 	<form
@@ -30,9 +30,8 @@
 		</div>
 
 		<div class="form-group">
-
 			<div class="row">
-				<div class="col-lg-4">
+				<div class="col-lg-5">
 					<label for="upload-processSteps">Process Steps</label><br />
 					<div class="input-group">
 						<span class="input-group-btn">
@@ -41,41 +40,75 @@
 							</span>
 						</span>
 						<input type="text" class="form-control" readonly="readonly">
+						<span class="input-group-btn">
+							<span class="btn btn-success">
+								<span class="glyphicon glyphicon-upload"></span>
+								Upload
+							</span>
+						</span>
 					</div>
 				</div>
 			</div>
 
 			<div class="row">
-				<div class="col-lg-8">
-					Last updated: 5/24/2016 3:42pm
+				<div class="col-lg-8 light-text">
+					Last updated: 5/24/2016 3:43pm
 				</div>
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-lg-4 form-group">
-				<label for="upload-checklist">Checklist</label><br />
-				<div class="input-group">
-					<span class="input-group-btn">
-						<span class="btn btn-primary btn-file">
-							Browse <input type="file" name="upload-checklist" id="upload-checklist">
+		<div class="form-group">
+			<div class="row">
+				<div class="col-lg-5">
+					<label for="upload-checklist">Checklist</label><br />
+					<div class="input-group">
+						<span class="input-group-btn">
+							<span class="btn btn-primary btn-file">
+								Browse <input type="file" name="upload-checklist" id="upload-checklist">
+							</span>
 						</span>
-					</span>
-					<input type="text" class="form-control" readonly="readonly">
+						<input type="text" class="form-control" readonly="readonly">
+						<span class="input-group-btn">
+							<span class="btn btn-success">
+								<span class="glyphicon glyphicon-upload"></span>
+								Upload
+							</span>
+						</span>
+					</div>
+				</div>
+			</div>		
+
+			<div class="row">
+				<div class="col-lg-8 light-text">
+					Last updated: 5/24/2016 3:44pm
 				</div>
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-lg-4 form-group">
-				<label for="upload-formPacket">Forms Packet</label><br />
-				<div class="input-group">
-					<span class="input-group-btn">
-						<span class="btn btn-primary btn-file">
-							Browse <input type="file" name="upload-formsPacket" id="upload-formsPacket">
+		<div class="form-group">
+			<div class="row">
+				<div class="col-lg-5">
+					<label for="upload-formPacket">Forms Packet</label><br />
+					<div class="input-group">
+						<span class="input-group-btn">
+							<span class="btn btn-primary btn-file">
+								Browse <input type="file" name="upload-formsPacket" id="upload-formsPacket">
+							</span>
 						</span>
-					</span>
-					<input type="text" class="form-control" readonly="readonly">
+						<input type="text" class="form-control" readonly="readonly">
+						<span class="input-group-btn">
+							<span class="btn btn-success">
+								<span class="glyphicon glyphicon-upload"></span>
+								Upload
+							</span>
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-8 light-text">
+					Last updated: 5/24/2016 3:45pm
 				</div>
 			</div>
 		</div>
