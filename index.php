@@ -84,9 +84,11 @@
                         <li id="homepage-link">
                             <a id="navLink-homepage" href="./?page=<?=APP_HOMEPAGE?>">Homepage</a> 
                         </li>
+                        <?php if ($loggedIn) { ?>
                         <li id="admin-link">
                             <a id="navLink-admin" href="./?page=admin">Admin</a> 
                         </li>
+                        <?php } ?>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">

@@ -11,34 +11,109 @@
 			</ul>
 
 			<div class="tab-content myTabs">
-				<div id="ops-tab" class="tab-pane fade in active">
-					<a href="" target="_blank">Process Steps</a><br />
-					<a href="" target="_blank">Forms</a><br />
-					<a href="" target="_blank">Checklist</a><br />
+				<div id="ops-tab" class="tab-pane fade in active" style="line-height:2.75em;">
+					<a
+						href=""
+						target="_blank"
+						class="btn btn-primary">
+						Process Steps
+					</a><br />
+					<a
+						href=""
+						target="_blank"
+						class="btn btn-primary">
+						Forms
+					</a><br />
+					<a
+						href=""
+						target="_blank"
+						class="btn btn-primary">
+						Checklist
+					</a><br />
 				</div>
 
-				<div id="usps-tab" class="tab-pane fade active">
-					<a href="" target="_blank">Process Steps</a><br />
-					<a href="" target="_blank">Forms</a><br />
-					<a href="" target="_blank">Checklist</a>
+				<div id="usps-tab" class="tab-pane fade active" style="line-height:2.75em;">
+					<a
+						href=""
+						target="_blank"
+						class="btn btn-primary">
+						Process Steps
+					</a><br />
+					<a
+						href=""
+						target="_blank"
+						class="btn btn-primary">
+						Forms
+					</a><br />
+					<a
+						href=""
+						target="_blank"
+						class="btn btn-primary">
+						Checklist
+					</a><br />
 				</div>
 
-				<div id="ap-tab" class="tab-pane fade active">
-					<a href="" target="_blank">Process Steps</a><br />
-					<a href="" target="_blank">Forms</a><br />
-					<a href="" target="_blank">Checklist</a>
+				<div id="ap-tab" class="tab-pane fade active" style="line-height:2.75em;">
+					<a
+						href=""
+						target="_blank"
+						class="btn btn-primary">
+						Process Steps
+					</a><br />
+					<a
+						href=""
+						target="_blank"
+						class="btn btn-primary">
+						Forms
+					</a><br />
+					<a
+						href=""
+						target="_blank"
+						class="btn btn-primary">
+						Checklist
+					</a><br />
 				</div>
 
-				<div id="exec-tab" class="tab-pane fade active">
-					<a href="" target="_blank">Process Steps</a><br />
-					<a href="" target="_blank">Forms</a><br />
-					<a href="" target="_blank">Checklist</a>
+				<div id="exec-tab" class="tab-pane fade active" style="line-height:2.75em;">
+					<a
+						href=""
+						target="_blank"
+						class="btn btn-primary">
+						Process Steps
+					</a><br />
+					<a
+						href=""
+						target="_blank"
+						class="btn btn-primary">
+						Forms
+					</a><br />
+					<a
+						href=""
+						target="_blank"
+						class="btn btn-primary">
+						Checklist
+					</a><br />
 				</div>
 
-				<div id="fac-tab" class="tab-pane fade active">
-					<a href="" target="_blank">Process Steps</a><br />
-					<a href="" target="_blank">Forms</a><br />
-					<a href="" target="_blank">Checklist</a>
+				<div id="fac-tab" class="tab-pane fade active" style="line-height:2.75em;">
+					<a
+						href=""
+						target="_blank"
+						class="btn btn-primary">
+						Process Steps
+					</a><br />
+					<a
+						href=""
+						target="_blank"
+						class="btn btn-primary">
+						Forms
+					</a><br />
+					<a
+						href=""
+						target="_blank"
+						class="btn btn-primary">
+						Checklist
+					</a><br />
 				</div>
 			</div>
 		</div>

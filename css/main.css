@@ -18,6 +18,21 @@
 	background-color: #FCFCFC;
 }
 
+label{
+	font-weight:bold;
+	font-size:1.1em;
+	color:#777;
+}
+
+a.btn{
+	width:25%;
+}
+
+
+
+
+
+
 
 
 /** CSS to make dropdown look correct in nav-bar **/
@@ -37,3 +52,29 @@
 	font-style:italic;
 }
 
+
+/* Style rules for file upload input */
+.btn-file{
+	position:relative;
+	overflow:hidden;
+}
+.btn-file input[type=file]{
+	position:absolute;
+	top:0;
+	right:0;
+	min-width:100%;
+	min-height:100%;
+	font-size:100px;
+	text-align:right;
+	filter:alpha(opacity=0);
+	opacity:0;
+	outline:0;
+	background:white;
+	cursor:inherit;
+	display:block;
+}
+
+input[readonly]{
+	background: white !important;
+	cursor: text !important;
+}
