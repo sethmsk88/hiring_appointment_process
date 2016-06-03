@@ -1,3 +1,5 @@
+<script src="./js/admin.js"></script>
+
 <div class="container">
 
 	<div class="row">
@@ -9,8 +11,8 @@
 	<br />
 
 	<form
-		name="uploadDoc-form"
-		id="uploadDoc-form"
+		name="uploadFile-form"
+		id="uploadFile-form"
 		role="form"
 		method="post"
 		action=""
@@ -29,6 +31,10 @@
 			</div>
 		</div>
 
+		<div id="ajax_uploadResponse">
+			<!-- To be filled by AJAX -->
+		</div>
+
 		<div class="form-group">
 			<div class="row">
 				<div class="col-lg-5">
@@ -41,7 +47,7 @@
 						</span>
 						<input type="text" class="form-control" readonly="readonly">
 						<span class="input-group-btn">
-							<span class="btn btn-success">
+							<span class="btn btn-success upload-btn">
 								<span class="glyphicon glyphicon-upload"></span>
 								Upload
 							</span>
@@ -69,7 +75,7 @@
 						</span>
 						<input type="text" class="form-control" readonly="readonly">
 						<span class="input-group-btn">
-							<span class="btn btn-success">
+							<span class="btn btn-success upload-btn">
 								<span class="glyphicon glyphicon-upload"></span>
 								Upload
 							</span>

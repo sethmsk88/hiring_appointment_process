@@ -81,3 +81,8 @@ input[readonly]{
 	background: white !important;
 	cursor: text !important;
 }
+
+.loading-img {
+	height: 36px;
+	width: 36px;
+}
