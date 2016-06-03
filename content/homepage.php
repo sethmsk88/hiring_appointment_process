@@ -32,7 +32,7 @@
 					</a><br />
 				</div>
 
-				<div id="usps-tab" class="tab-pane fade active" style="line-height:2.75em;">
+				<div id="usps-tab" class="tab-pane fade" style="line-height:2.75em;">
 					<a
 						href=""
 						target="_blank"
@@ -53,7 +53,7 @@
 					</a><br />
 				</div>
 
-				<div id="ap-tab" class="tab-pane fade active" style="line-height:2.75em;">
+				<div id="ap-tab" class="tab-pane fade" style="line-height:2.75em;">
 					<a
 						href=""
 						target="_blank"
@@ -74,7 +74,7 @@
 					</a><br />
 				</div>
 
-				<div id="exec-tab" class="tab-pane fade active" style="line-height:2.75em;">
+				<div id="exec-tab" class="tab-pane fade" style="line-height:2.75em;">
 					<a
 						href=""
 						target="_blank"
@@ -95,7 +95,7 @@
 					</a><br />
 				</div>
 
-				<div id="fac-tab" class="tab-pane fade active" style="line-height:2.75em;">
+				<div id="fac-tab" class="tab-pane fade" style="line-height:2.75em;">
 					<a
 						href=""
 						target="_blank"
