@@ -22,11 +22,12 @@
 			<div class="col-lg-4 form-group">
 				<label for="payPlan">Pay Plan</label>
 				<select name="payPlan" id="payPlan" class="form-control">
-					<option value="ops">OPS</option>
-					<option value="usps">USPS</option>
-					<option value="ap">A&amp;P</option>
-					<option value="exec">Exec</option>
-					<option value="fac">Fac</option>
+					<option value="-1"></option>
+					<option value="0">A&amp;P</option>
+					<option value="1">Exec</option>
+					<option value="2">Fac</option>
+					<option value="3">OPS</option>
+					<option value="4">USPS</option>
 				</select>
 			</div>
 		</div>

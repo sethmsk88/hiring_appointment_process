@@ -1,21 +1,56 @@
 <?php
+
+$upload_base_dir = '../uploads/';
+$upload_ids = array(
+	0 => "upload-processSteps",
+	1 => "upload-checklist",
+	2 => "upload-formPacket"
+);
+$upload_type_dirs = array(
+	0 => "process_steps/",
+	1 => "checklist/",
+	2 => "forms/"
+);
+$upload_payPlan_dirs = array(
+	0 => "ap/",
+	1 => "exec/",
+	2 => "fac/",
+	3 => "ops/",
+	4 => "usps/"
+);
+
+// Determine which subdirectory to put the file in 
 if (isset($_FILES['upload-processSteps'])){
-	$uploads_dir = '../uploads/';
-	$checklist_dir = 'checklist/';
-	$forms_dir = 'forms/';
-	$processSteps_dir = 'process_steps/';
+	$uploadType = 0;
+} else if (isset($_FILES['upload-checklist'])){
+	$uploadType = 1;
+} else if (isset($_FILES['upload-formPacket'])){
+	$uploadType = 2;
+} else{
+	$uploadType = -1;
+}
+
+/*echo 'uploadType: ' . $uploadType . '<br />';
+echo 'payPlan: ' . $_POST['payPlan'] . '<br />';
+
+exit;*/
+// If required values were posted to this page
+if ($uploadType > -1 && isset($_POST['payPlan'])){
 
 	$error = array();
-	$fileName = $_FILES['upload-processSteps']['name'];
-	$fileSize = $_FILES['upload-processSteps']['size'];
-	$fileTmpName = $_FILES['upload-processSteps']['tmp_name'];
-	$fileType = $_FILES['upload-processSteps']['type'];
+	$fileName = $_FILES[$upload_ids[$uploadType]]['name'];
+	$fileSize = $_FILES[$upload_ids[$uploadType]]['size'];
+	$fileTmpName = $_FILES[$upload_ids[$uploadType]]['tmp_name'];
+	$fileType = $_FILES[$upload_ids[$uploadType]]['type'];
 	$fileName_exploded = explode('.', $fileName);
 	$fileExt = strtolower(end($fileName_exploded));
 
 	// Append timestamp to filename
 	$timeStamp = date("YmdHis"); // 1/2/2016 1:05:12pm = 20160102130512
 	$fileName = $fileName_exploded[0] . '_' . $timeStamp . '.' . $fileExt;
+
+	// Create upload path
+	$uploadPath = $upload_base_dir . $upload_type_dirs[$uploadType] . $upload_payPlan_dirs[$_POST['payPlan']] . $fileName;
 
 	// Check to see if extension is valid
 	$extensions = array("pdf");
@@ -43,7 +78,7 @@ if (isset($_FILES['upload-processSteps'])){
 		}
 		echo '</div>';
 	} else{ // Else, there are no errors so upload file
-		move_uploaded_file($fileTmpName, $uploads_dir . $processSteps_dir . $fileName);
+		move_uploaded_file($fileTmpName, $uploadPath);
 ?>
 		<div class="alert alert-success">
 			<strong>Success!</strong> File "<?= $fileName ?>" was successfully uploaded.
