@@ -95,7 +95,7 @@
 		<div class="form-group">
 			<div class="row">
 				<div class="col-lg-5">
-					<label for="upload-formPacket">Forms Packet</label><br />
+					<label for="upload-formsPacket">Forms Packet</label><br />
 					<div class="input-group">
 						<span class="input-group-btn">
 							<span class="btn btn-primary btn-file">
@@ -104,7 +104,7 @@
 						</span>
 						<input type="text" class="form-control" readonly="readonly">
 						<span class="input-group-btn">
-							<span class="btn btn-success">
+							<span class="btn btn-success upload-btn">
 								<span class="glyphicon glyphicon-upload"></span>
 								Upload
 							</span>

@@ -45,7 +45,21 @@ $(document).ready(function(){
 			processData: false,
 			contentType: false,
 			success: function(response) {
+				
+				// Populate response div with response
 				$('#ajax_uploadResponse').html(response);
+
+				// Clear the upload input fields
+				$('input[type="file"]').each(function(){
+
+					// Wrap the input field in form tags, then reset form
+					$(this).wrap('<form>').closest('form').get(0).reset();
+
+					// Remove wrapping form tags
+					$(this).unwrap();
+
+					$(this).parent().parent().next("input").val("");
+				});
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				var errorMsg = 'Error Status: ' + textStatus + '<br />' +  '<code>' + errorThrown + '</code>';

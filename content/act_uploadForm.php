@@ -4,7 +4,7 @@ $upload_base_dir = '../uploads/';
 $upload_ids = array(
 	0 => "upload-processSteps",
 	1 => "upload-checklist",
-	2 => "upload-formPacket"
+	2 => "upload-formsPacket"
 );
 $upload_type_dirs = array(
 	0 => "process_steps/",
@@ -20,11 +20,11 @@ $upload_payPlan_dirs = array(
 );
 
 // Determine which subdirectory to put the file in 
-if (isset($_FILES['upload-processSteps'])){
+if (strlen($_FILES['upload-processSteps']['name']) > 0){
 	$uploadType = 0;
-} else if (isset($_FILES['upload-checklist'])){
+} else if (strlen($_FILES['upload-checklist']['name']) > 0){
 	$uploadType = 1;
-} else if (isset($_FILES['upload-formPacket'])){
+} else if (strlen($_FILES['upload-formsPacket']['name']) > 0){
 	$uploadType = 2;
 } else{
 	$uploadType = -1;
