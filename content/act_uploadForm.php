@@ -30,14 +30,10 @@ if (isset($_FILES['upload-processSteps'])){
 	$uploadType = -1;
 }
 
-/*echo 'uploadType: ' . $uploadType . '<br />';
-echo 'payPlan: ' . $_POST['payPlan'] . '<br />';
-
-exit;*/
 // If required values were posted to this page
 if ($uploadType > -1 && isset($_POST['payPlan'])){
 
-	$error = array();
+	$errors = array();
 	$fileName = $_FILES[$upload_ids[$uploadType]]['name'];
 	$fileSize = $_FILES[$upload_ids[$uploadType]]['size'];
 	$fileTmpName = $_FILES[$upload_ids[$uploadType]]['tmp_name'];
@@ -49,35 +45,41 @@ if ($uploadType > -1 && isset($_POST['payPlan'])){
 	$timeStamp = date("YmdHis"); // 1/2/2016 1:05:12pm = 20160102130512
 	$fileName = $fileName_exploded[0] . '_' . $timeStamp . '.' . $fileExt;
 
-	// Create upload path
-	$uploadPath = $upload_base_dir . $upload_type_dirs[$uploadType] . $upload_payPlan_dirs[$_POST['payPlan']] . $fileName;
-
 	// Check to see if extension is valid
 	$extensions = array("pdf");
-	if (in_array($fileExt, $extensions) === false) {
-		$errors[] = "Invalid file type. Please choose a PDF file.";
+	if (in_array($fileExt, $extensions) === false){
+		array_push($errors, "Invalid file type. Please choose a PDF file.");
 	}
 
 	// Make sure file is not too large
 	$maxFileSize = 1024 * 1024 * 64; // 64MB
-	if ($fileSize > $maxFileSize) {
-		$errors[] = "Max file size exceeded. File size must be less than 64MB";
+	if ($fileSize > $maxFileSize){
+		array_push($errors, "Max file size exceeded. File size must be less than 64MB");
 	}
 
 	// Make sure filename is not too long
 	$maxFileNameLength = 250;
-	if (strlen($fileName) > $maxFileNameLength) {
-		$errors[] = "File name is too long (max 250 characters)";
+	if (strlen($fileName) > $maxFileNameLength){
+		array_push($errors, "Filename is too long (max 250 characters)");
+	}
+
+	// Make sure a pay plan was selected
+	if ($_POST['payPlan'] == -1){
+		array_push($errors, "A Pay Plan must be selected");
 	}
 
 	// If upload failed display error message
-	if (empty($errors) == false) {
+	if (empty($errors) == false){
 		echo '<div class="alert alert-danger"><strong>Error!</strong> File was NOT uploaded<br />';
 		foreach ($errors as $errorMsg) {
 			echo $errorMsg . '<br />';
 		}
 		echo '</div>';
 	} else{ // Else, there are no errors so upload file
+		
+		// Create upload path
+		$uploadPath = $upload_base_dir . $upload_type_dirs[$uploadType] . $upload_payPlan_dirs[$_POST['payPlan']] . $fileName;
+
 		move_uploaded_file($fileTmpName, $uploadPath);
 ?>
 		<div class="alert alert-success">
