@@ -42,12 +42,30 @@ $(document).ready(function(){
 			url: './content/act_uploadForm.php',
 			type: 'post',
 			data: formData,
+			dataType: 'json',
 			processData: false,
 			contentType: false,
 			success: function(response) {
 				
-				// Populate response div with response
-				$('#ajax_uploadResponse').html(response);
+				$uploadResponse = "";
+
+				// Append success message to upload response
+				if (response.hasOwnProperty('success_msg')){
+					$uploadResponse += response['success_msg'];
+				}
+
+				// Append error messages to upload response
+				if (response.hasOwnProperty('errors')){
+					$uploadResponse += response['errors'];
+				}
+
+				// Populate upload response div
+				$('#ajax_uploadResponse').html($uploadResponse);
+
+				// Populate last updated div
+				if (response.hasOwnProperty('category')){
+					$('#' + response['category']).html(response['last-updated']);
+				}
 
 				// Clear the upload input fields
 				$('input[type="file"]').each(function(){

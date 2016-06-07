@@ -58,7 +58,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-lg-8 light-text">
+				<div id="processSteps-updated" class="col-lg-8 light-text">
 					Last updated: 5/24/2016 3:43pm
 				</div>
 			</div>
@@ -86,7 +86,7 @@
 			</div>		
 
 			<div class="row">
-				<div class="col-lg-8 light-text">
+				<div id="checklist-updated" class="col-lg-8 light-text">
 					Last updated: 5/24/2016 3:44pm
 				</div>
 			</div>
@@ -114,7 +114,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-lg-8 light-text">
+				<div id="formsPacket-updated" class="col-lg-8 light-text">
 					Last updated: 5/24/2016 3:45pm
 				</div>
 			</div>

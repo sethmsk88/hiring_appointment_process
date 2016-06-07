@@ -1,4 +1,8 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/bootstrap/apps/shared/db_connect.php';
+require_once "../includes/functions.php";
+
+$json_response = array();
 
 $upload_base_dir = '../uploads/';
 $upload_ids = array(
@@ -29,6 +33,13 @@ if (strlen($_FILES['upload-processSteps']['name']) > 0){
 } else{
 	$uploadType = -1;
 }
+
+// These values line up with the uploadTypes above
+$response_ids = array(
+	0 => "processSteps-updated",
+	1 => "checklist-updated",
+	2 => "formsPacket-updated"
+);
 
 // If required values were posted to this page
 if ($uploadType > -1 && isset($_POST['payPlan'])){
@@ -70,22 +81,47 @@ if ($uploadType > -1 && isset($_POST['payPlan'])){
 
 	// If upload failed display error message
 	if (empty($errors) == false){
-		echo '<div class="alert alert-danger"><strong>Error!</strong> File was NOT uploaded<br />';
+		$json_response['errors'] = '<div class="alert alert-danger"><strong>Error!</strong> File was NOT uploaded<br />';
+
 		foreach ($errors as $errorMsg) {
-			echo $errorMsg . '<br />';
+			$json_response['errors'] .= $errorMsg . '<br />';
 		}
-		echo '</div>';
+		$json_response['errors'] .= '</div>';
+
 	} else{ // Else, there are no errors so upload file
 		
 		// Create upload path
 		$uploadPath = $upload_base_dir . $upload_type_dirs[$uploadType] . $upload_payPlan_dirs[$_POST['payPlan']] . $fileName;
 
 		move_uploaded_file($fileTmpName, $uploadPath);
-?>
-		<div class="alert alert-success">
-			<strong>Success!</strong> File "<?= $fileName ?>" was successfully uploaded.
-		</div>
-<?php
+
+		$payPlan_numeric = convertPayPlan($_POST['payPlan'], 'numeric');
+
+		// Insert History
+		$insert_uploadHistory_sql = "
+			INSERT INTO hrodt.hiring_appt_upload_history (UploadDate, FileName, PayPlan, Category)
+			VALUES (NOW(),?,?,?)
+		";
+		if (!$stmt = $conn->prepare($insert_uploadHistory_sql)) {
+			$json_response['errors'] = 'Prepare failed: (' . $conn->errno . ') ' . $conn->error . '<br />';
+		} else if (!$stmt->bind_param("ssi",
+			$fileName, $payPlan_numeric, $uploadType)){
+			$json_response['errors'] = 'Binding parameters failed (' . $stmt->errno . ') ' . $stmt->error . '<br />';
+		} else if (!$stmt->execute()) {
+			$json_response['errors'] = 'Execute failed: (' . $stmt->errno . ') ' . $stmt->error . '<br />';
+		}
+
+		// Append success message to response
+		$json_response['success_msg'] = '<div class="alert alert-success"><strong>Success!</strong> File "' . $fileName . '" was successfully uploaded.</div>';
+
+		// Append upload category to response
+		$json_response['category'] = $response_ids[$uploadType];
+
+		// Append last updated message to response
+		$json_response['last-updated'] = "Last updated: " . date('n/j/Y g:ia') . ' by Seth Kerr';
+
 	} // End if upload success
+
+	echo json_encode($json_response);
 }// End if file was posted to page
 ?>
