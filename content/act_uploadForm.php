@@ -2,6 +2,9 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/bootstrap/apps/shared/db_connect.php';
 require_once "../includes/functions.php";
 
+// Set timezone
+date_default_timezone_set('America/New_York');
+
 // Start session or regenerate session id
 sec_session_start();
 
