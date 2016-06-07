@@ -82,14 +82,19 @@ function convertPayPlan($payPlan, $format) {
 		switch ($payPlan){
 			case 0:
 				$convertedPayPlan = 'A&amp;P';
+				break;
 			case 1:
 				$convertedPayPlan = 'Exec';
+				break;
 			case 2:
 				$convertedPayPlan = 'Fac';
+				break;
 			case 3:
 				$convertedPayPlan = 'OPS';
+				break;
 			case 4:
 				$convertedPayPlan = 'USPS';
+				break;
 		}
 	}
 	return $convertedPayPlan;

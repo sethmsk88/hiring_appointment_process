@@ -2,6 +2,9 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/bootstrap/apps/shared/db_connect.php';
 require_once "../includes/functions.php";
 
+// Start session or regenerate session id
+sec_session_start();
+
 $json_response = array();
 
 $upload_base_dir = '../uploads/';
@@ -99,13 +102,13 @@ if ($uploadType > -1 && isset($_POST['payPlan'])){
 
 		// Insert History
 		$insert_uploadHistory_sql = "
-			INSERT INTO hrodt.hiring_appt_upload_history (UploadDate, FileName, PayPlan, Category)
-			VALUES (NOW(),?,?,?)
+			INSERT INTO hrodt.hiring_appt_upload_history (UploadDate, FileName, PayPlan, Category, UserID)
+			VALUES (NOW(),?,?,?,?)
 		";
 		if (!$stmt = $conn->prepare($insert_uploadHistory_sql)) {
 			$json_response['errors'] = 'Prepare failed: (' . $conn->errno . ') ' . $conn->error . '<br />';
-		} else if (!$stmt->bind_param("ssi",
-			$fileName, $payPlan_numeric, $uploadType)){
+		} else if (!$stmt->bind_param("ssii",
+			$fileName, $payPlan_numeric, $uploadType, $_SESSION['user_id'])){
 			$json_response['errors'] = 'Binding parameters failed (' . $stmt->errno . ') ' . $stmt->error . '<br />';
 		} else if (!$stmt->execute()) {
 			$json_response['errors'] = 'Execute failed: (' . $stmt->errno . ') ' . $stmt->error . '<br />';
@@ -118,7 +121,7 @@ if ($uploadType > -1 && isset($_POST['payPlan'])){
 		$json_response['category'] = $response_ids[$uploadType];
 
 		// Append last updated message to response
-		$json_response['last-updated'] = "Last updated: " . date('n/j/Y g:ia') . ' by Seth Kerr';
+		$json_response['last-updated'] = "Last updated: " . date('n/j/Y g:ia') . ' by ' . $_SESSION['firstName'] . ' ' . $_SESSION['lastName'];
 
 	} // End if upload success
 
