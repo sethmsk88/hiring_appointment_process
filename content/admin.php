@@ -6,7 +6,7 @@
 
 	// Get most recent upload information for each category
 	$sel_recent_upload_sql = "
-		SELECT h.UploadDate, h.Category, u.firstName, u.lastName
+		SELECT h.UploadDate, u.firstName, u.lastName
 		FROM hrodt.hiring_appt_upload_history h
 		JOIN secure_login.users u
 		ON h.UserID = u.id
@@ -23,13 +23,12 @@
 			$stmt->bind_param("i", $category);
 			$stmt->execute();
 			$stmt->store_result();
-			$stmt->bind_result($uploadDate, $category, $firstName, $lastName);
+			$stmt->bind_result($uploadDate, $firstName, $lastName);
 			$stmt->fetch();
 
 			$fullName = $firstName . ' ' . $lastName;
 			$mostRecentUploads[$category] = array($uploadDate, $fullName);
 		}
-		
 	}
 ?>
 
@@ -94,7 +93,13 @@
 
 			<div class="row">
 				<div id="processSteps-updated" class="col-lg-8 light-text">
-					Last updated: <?= date('n/j/Y g:ia', strtotime($mostRecentUploads[0][0])) ?> by <?= $mostRecentUploads[0][1] ?>
+					<?php
+						// If there is at least one upload in the database,
+						// then display last updated info
+						if (strlen($mostRecentUploads[0][0]) !== 0){
+							echo 'Last updated: ' . date('n/j/Y g:ia', strtotime($mostRecentUploads[0][0])) . ' by ' . $mostRecentUploads[0][1];
+						}						
+					?>
 				</div>
 			</div>
 		</div>
@@ -122,7 +127,13 @@
 
 			<div class="row">
 				<div id="checklist-updated" class="col-lg-8 light-text">
-					Last updated: <?= date('n/j/Y g:ia', strtotime($mostRecentUploads[1][0])) ?> by <?= $mostRecentUploads[1][1] ?>
+					<?php
+						// If there is at least one upload in the database,
+						// then display last updated info
+						if (strlen($mostRecentUploads[1][0]) !== 0){
+							echo 'Last updated: ' . date('n/j/Y g:ia', strtotime($mostRecentUploads[1][0])) . ' by ' . $mostRecentUploads[1][1];
+						}						
+					?>
 				</div>
 			</div>
 		</div>
@@ -150,7 +161,13 @@
 
 			<div class="row">
 				<div id="formsPacket-updated" class="col-lg-8 light-text">
-					Last updated: <?= date('n/j/Y g:ia', strtotime($mostRecentUploads[2][0])) ?> by <?= $mostRecentUploads[2][1] ?>
+					<?php
+						// If there is at least one upload in the database,
+						// then display last updated info
+						if (strlen($mostRecentUploads[2][0]) !== 0){
+							echo 'Last updated: ' . date('n/j/Y g:ia', strtotime($mostRecentUploads[2][0])) . ' by ' . $mostRecentUploads[2][1];
+						}						
+					?>
 				</div>
 			</div>
 		</div>
