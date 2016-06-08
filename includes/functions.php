@@ -76,24 +76,27 @@ function convertPayPlan($payPlan, $format) {
 			case 'fac':
 				$convertedPayPlan = 'Faculty';
 				break;
+			case 'ops':
+				$convertedPayPlan = 'OPS';
+				break;
 		}
 	}
 	else if ($format == 'numeric'){
 		switch ($payPlan){
 			case 0:
-				$convertedPayPlan = 'A&amp;P';
+				$convertedPayPlan = 'ap';
 				break;
 			case 1:
-				$convertedPayPlan = 'Exec';
+				$convertedPayPlan = 'exec';
 				break;
 			case 2:
-				$convertedPayPlan = 'Fac';
+				$convertedPayPlan = 'fac';
 				break;
 			case 3:
-				$convertedPayPlan = 'OPS';
+				$convertedPayPlan = 'ops';
 				break;
 			case 4:
-				$convertedPayPlan = 'USPS';
+				$convertedPayPlan = 'usps';
 				break;
 		}
 	}
