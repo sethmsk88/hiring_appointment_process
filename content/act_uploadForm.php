@@ -127,7 +127,8 @@ if ($uploadType > -1 && isset($_POST['payPlan'])){
 		$json_response['last-updated'] = "Last updated: " . date('n/j/Y g:ia') . ' by ' . $_SESSION['firstName'] . ' ' . $_SESSION['lastName'];
 
 	} // End if upload success
-
-	echo json_encode($json_response);
-}// End if file was posted to page
+} else { // End if file was posted to page
+	$json_response['errors'] = '<div class="alert alert-danger"><strong>Error!</strong> File was NOT uploaded<br />A File must be selected</div>';
+}
+echo json_encode($json_response);
 ?>
