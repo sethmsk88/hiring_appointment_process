@@ -39,6 +39,7 @@ a.btn{
 
 .panel-group {
 	margin-bottom: 10px;
+	overflow: hidden;
 }
 
 .panel-group > .panel {

@@ -84,7 +84,7 @@
 			
 					<!-- Process Steps -->
 					<div class="row">
-						<div class="col-xs-5">
+						<div class="col-sm-7 col-md-6">
 							<div id="collapse-group-0" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
@@ -109,7 +109,7 @@
 
 					<!-- Forms -->
 					<div class="row">
-						<div class="col-xs-5">
+						<div class="col-sm-7 col-md-6">
 							<div id="collapse-group-1" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
@@ -134,7 +134,7 @@
 
 					<!-- Checklist -->
 					<div class="row">
-						<div class="col-xs-5">
+						<div class="col-sm-7 col-md-6">
 							<div id="collapse-group-2" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
@@ -159,20 +159,10 @@
 
 				<!-- USPS Tab -->
 				<div id="usps-tab" class="tab-pane fade">
-					<?php
-						// Create a link for each file in this category and pay plan
-						$links = getFileLinks(0, 'usps', $fileNames_matrix);
-						$popover_content = "";
-
-						foreach ($links as $linkName => $linkPath){
-							// $popover_content .= '<a href="' . $linkPath . '" target="_blank">' . $linkName . '</a><br />';
-							// $popover_content .= "test ";
-						}
-					?>
 
 					<!-- Process Steps -->
 					<div class="row">
-						<div class="col-xs-5">
+						<div class="col-sm-7 col-md-6">
 							<div id="collapse-group-3" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
@@ -185,6 +175,15 @@
 									</div>
 									<div id="collapse-3" class="panel-collapse collapse">
 										<div class="panel-body">
+											<?php
+												// Create a link for each file in this category and pay plan
+												$links = getFileLinks(0, 'usps', $fileNames_matrix);
+												$popover_content = "";
+
+												foreach ($links as $linkName => $linkPath){
+													echo '<a href="' . $linkPath . '" target="_blank">' . $linkName . '</a><br />';
+												}
+											?>
 											<a href="#">Link 1</a><br />
 											<a href="#">Link 2</a>
 										</div>
@@ -197,7 +196,7 @@
 
 					<!-- Forms -->
 					<div class="row">
-						<div class="col-xs-5">
+						<div class="col-sm-7 col-md-6">
 							<div id="collapse-group-4" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
@@ -222,7 +221,7 @@
 
 					<!-- Checklist -->
 					<div class="row">
-						<div class="col-xs-5">
+						<div class="col-sm-7 col-md-6">
 							<div id="collapse-group-5" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
@@ -249,7 +248,7 @@
 				<div id="ap-tab" class="tab-pane fade">
 					<!-- Process Steps -->
 					<div class="row">
-						<div class="col-xs-5">
+						<div class="col-sm-7 col-md-6">
 							<div id="collapse-group-6" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
@@ -274,7 +273,7 @@
 
 					<!-- Forms -->
 					<div class="row">
-						<div class="col-xs-5">
+						<div class="col-sm-7 col-md-6">
 							<div id="collapse-group-7" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
@@ -299,7 +298,7 @@
 
 					<!-- Checklist -->
 					<div class="row">
-						<div class="col-xs-5">
+						<div class="col-sm-7 col-md-6">
 							<div id="collapse-group-8" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
@@ -327,7 +326,7 @@
 					
 					<!-- Process Steps -->
 					<div class="row">
-						<div class="col-xs-5">
+						<div class="col-sm-7 col-md-6">
 							<div id="collapse-group-9" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
@@ -352,7 +351,7 @@
 
 					<!-- Forms -->
 					<div class="row">
-						<div class="col-xs-5">
+						<div class="col-sm-7 col-md-6">
 							<div id="collapse-group-10" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
@@ -377,7 +376,7 @@
 
 					<!-- Checklist -->
 					<div class="row">
-						<div class="col-xs-5">
+						<div class="col-sm-7 col-md-6">
 							<div id="collapse-group-11" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
@@ -405,7 +404,7 @@
 
 					<!-- Process Steps -->
 					<div class="row">
-						<div class="col-xs-5">
+						<div class="col-sm-7 col-md-6">
 							<div id="collapse-group-12" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
@@ -430,7 +429,7 @@
 
 					<!-- Forms -->
 					<div class="row">
-						<div class="col-xs-5">
+						<div class="col-sm-7 col-md-6">
 							<div id="collapse-group-13" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
@@ -455,7 +454,7 @@
 
 					<!-- Checklist -->
 					<div class="row">
-						<div class="col-xs-5">
+						<div class="col-sm-7 col-md-6">
 							<div id="collapse-group-14" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
