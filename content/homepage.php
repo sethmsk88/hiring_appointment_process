@@ -1,3 +1,5 @@
+<script src="./js/homepage.js"></script>
+
 <?php
 	// Create complete paths to files determined by the parameters
 	// Return array of links

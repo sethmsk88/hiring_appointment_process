@@ -43,7 +43,8 @@ a.btn{
 }
 
 .panel-group > .panel {
-	background-color: #337ab7
+	background-color: #337ab7;
+	cursor: pointer;
 }
 
 .panel-group > .panel:hover {
