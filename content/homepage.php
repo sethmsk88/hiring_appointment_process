@@ -17,10 +17,11 @@
 			$links = array();
 
 			// Add each link to links array
-			foreach ($fileNames_matrix[$category][$payPlan] as $fileName){
+			foreach ($fileNames_matrix[$category][$payPlan] as $fileInfo){
 				// Get link name
-				$linkName = preg_replace("/_\d+.pdf$/", "", $fileName);
-				$links[$linkName] = $uploads_base_dir . $uploads_category_dirs[$category] . $payPlan . '/' . $fileName;
+				$links[$fileInfo['linkName']] = $uploads_base_dir . $uploads_category_dirs[$category] . $payPlan . '/' . $fileInfo['fileName'];
+
+				// $linkName = preg_replace("/_\d+.pdf$/", "", $fileName); // remove digits from end of fileName
 			}
 
 			return $links;
@@ -35,7 +36,7 @@
 
 	// Get Active uploaded files for each Pay Plan and Category
 	$sel_files_sql = "
-		SELECT FileName
+		SELECT FileName, LinkName
 		FROM hrodt.hiring_appt_upload_history
 		WHERE Category = ?
 			AND PayPlan = ?
@@ -52,17 +53,16 @@
 				$stmt->bind_param("is", $category, $payPlan);
 				$stmt->execute();
 				$stmt->store_result();
-				$stmt->bind_result($fileName);
+				$stmt->bind_result($fileName, $linkName);
 				
 				$fileNames_matrix[$category][$payPlan] = array(); // initialize array for fileNames
 
 				// Add each file for this payPlan and category to the matrix
 				while ($stmt->fetch()){
-					array_push($fileNames_matrix[$category][$payPlan], $fileName);
+					array_push($fileNames_matrix[$category][$payPlan], array('fileName' => $fileName, 'linkName' => $linkName));
 				}
 			}
 		}
-		// echo '<code>'. var_dump($fileNames_matrix) .'</code>';
 	}
 ?>
 
@@ -97,8 +97,6 @@
 									</div>
 									<div id="collapse-0" class="panel-collapse collapse">
 										<div class="panel-body">
-											<a href="#">Link 1</a><br />
-											<a href="#">Link 2</a>
 										</div>
 									</div>
 								</div>
@@ -122,8 +120,6 @@
 									</div>
 									<div id="collapse-1" class="panel-collapse collapse">
 										<div class="panel-body">
-											<a href="#">Link 1</a><br />
-											<a href="#">Link 2</a>
 										</div>
 									</div>
 								</div>
@@ -147,8 +143,6 @@
 									</div>
 									<div id="collapse-2" class="panel-collapse collapse">
 										<div class="panel-body">
-											<a href="#">Link 1</a><br />
-											<a href="#">Link 2</a>
 										</div>
 									</div>
 								</div>
@@ -184,8 +178,6 @@
 													echo '<a href="' . $linkPath . '" target="_blank">' . $linkName . '</a><br />';
 												}
 											?>
-											<a href="#">Link 1</a><br />
-											<a href="#">Link 2</a>
 										</div>
 									</div>
 								</div>
@@ -209,8 +201,6 @@
 									</div>
 									<div id="collapse-4" class="panel-collapse collapse">
 										<div class="panel-body">
-											<a href="#">Link 1</a><br />
-											<a href="#">Link 2</a>
 										</div>
 									</div>
 								</div>
@@ -234,8 +224,6 @@
 									</div>
 									<div id="collapse-5" class="panel-collapse collapse">
 										<div class="panel-body">
-											<a href="#">Link 1</a><br />
-											<a href="#">Link 2</a>
 										</div>
 									</div>
 								</div>
@@ -261,8 +249,15 @@
 									</div>
 									<div id="collapse-6" class="panel-collapse collapse">
 										<div class="panel-body">
-											<a href="#">Link 1</a><br />
-											<a href="#">Link 2</a>
+											<?php
+												// Create a link for each file in this category and pay plan
+												$links = getFileLinks(0, 'usps', $fileNames_matrix);
+												$popover_content = "";
+
+												foreach ($links as $linkName => $linkPath){
+													echo '<a href="' . $linkPath . '" target="_blank">' . $linkName . '</a><br />';
+												}
+											?>
 										</div>
 									</div>
 								</div>
@@ -286,8 +281,6 @@
 									</div>
 									<div id="collapse-7" class="panel-collapse collapse">
 										<div class="panel-body">
-											<a href="#">Link 1</a><br />
-											<a href="#">Link 2</a>
 										</div>
 									</div>
 								</div>
@@ -311,8 +304,6 @@
 									</div>
 									<div id="collapse-8" class="panel-collapse collapse">
 										<div class="panel-body">
-											<a href="#">Link 1</a><br />
-											<a href="#">Link 2</a>
 										</div>
 									</div>
 								</div>
@@ -339,8 +330,6 @@
 									</div>
 									<div id="collapse-9" class="panel-collapse collapse">
 										<div class="panel-body">
-											<a href="#">Link 1</a><br />
-											<a href="#">Link 2</a>
 										</div>
 									</div>
 								</div>
@@ -364,8 +353,6 @@
 									</div>
 									<div id="collapse-10" class="panel-collapse collapse">
 										<div class="panel-body">
-											<a href="#">Link 1</a><br />
-											<a href="#">Link 2</a>
 										</div>
 									</div>
 								</div>
@@ -389,8 +376,6 @@
 									</div>
 									<div id="collapse-11" class="panel-collapse collapse">
 										<div class="panel-body">
-											<a href="#">Link 1</a><br />
-											<a href="#">Link 2</a>
 										</div>
 									</div>
 								</div>
@@ -417,8 +402,6 @@
 									</div>
 									<div id="collapse-12" class="panel-collapse collapse">
 										<div class="panel-body">
-											<a href="#">Link 1</a><br />
-											<a href="#">Link 2</a>
 										</div>
 									</div>
 								</div>
@@ -442,8 +425,6 @@
 									</div>
 									<div id="collapse-13" class="panel-collapse collapse">
 										<div class="panel-body">
-											<a href="#">Link 1</a><br />
-											<a href="#">Link 2</a>
 										</div>
 									</div>
 								</div>
@@ -467,8 +448,6 @@
 									</div>
 									<div id="collapse-14" class="panel-collapse collapse">
 										<div class="panel-body">
-											<a href="#">Link 1</a><br />
-											<a href="#">Link 2</a>
 										</div>
 									</div>
 								</div>
