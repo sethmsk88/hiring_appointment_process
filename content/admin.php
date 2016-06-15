@@ -203,7 +203,7 @@
 ?>
 
 	<div class="row">
-		<table>
+		<table id="uploadedFiles-table" class="table table-striped">
 			<thead>
 				<tr>
 					<th>Link Name</th>

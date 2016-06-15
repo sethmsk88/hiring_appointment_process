@@ -90,6 +90,18 @@ a.btn{
 	font-style:italic;
 }
 
+.table td:first-child {
+	border-left: 2px solid #DDDDDD;
+}
+
+.table td:last-child {
+	border-right: 2px solid #DDDDDD;
+}
+
+.table tr:last-child {
+	border-bottom: 2px solid #DDDDDD;
+}
+
 
 /* Style rules for file upload input */
 .btn-file{
