@@ -69,7 +69,11 @@ a.btn{
 	padding-bottom: 8px;
 }
 
+.section-divider {
+	margin-top:12px;
 
+	border-top:2px solid #DDD;
+}
 
 
 

@@ -176,11 +176,14 @@
 	</form>
 
 	<div class="row">
+		<div class="col-lg-12 section-divider"></div>
+	</div>
+
+	<div class="row">
 		<div class="col-lg-12">
 			<h3>Delete Files</h3>
 		</div>
 	</div>
-	<br />
 
 
 <?php
