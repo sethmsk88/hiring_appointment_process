@@ -1,11 +1,13 @@
 <?php
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/bootstrap/apps/shared/db_connect.php';
 
+	require_once './includes/delete_confirm.php'; // confirm modal
+
 	$categories = array(0,1,2);
 	$mostRecentUploads = array(); // category => array(uploadDate, fullName)
 
 	// Get most recent upload information for each category
-	$sel_recent_upload_sql = "
+	$sel_recent_upload_q1 = "
 		SELECT h.UploadDate, u.firstName, u.lastName
 		FROM hrodt.hiring_appt_upload_history h
 		JOIN secure_login.users u
@@ -14,7 +16,7 @@
 		ORDER BY h.UploadDate DESC
 		LIMIT 1
 	";
-	if (!$stmt = $conn->prepare($sel_recent_upload_sql)){
+	if (!$stmt = $conn->prepare($sel_recent_upload_q1)){
 		echo 'Prepare failed: (' . $conn->errno . ') ' . $conn->error . '<br />';
 	} else{
 
@@ -23,11 +25,11 @@
 			$stmt->bind_param("i", $category);
 			$stmt->execute();
 			$stmt->store_result();
-			$stmt->bind_result($uploadDate, $firstName, $lastName);
+			$stmt->bind_result($q1_uploadDate, $q1_firstName, $q1_lastName);
 			$stmt->fetch();
 
-			$fullName = $firstName . ' ' . $lastName;
-			$mostRecentUploads[$category] = array($uploadDate, $fullName);
+			$fullName = $q1_firstName . ' ' . $q1_lastName;
+			$mostRecentUploads[$category] = array($q1_uploadDate, $fullName);
 		}
 	}
 ?>
@@ -170,6 +172,96 @@
 					?>
 				</div>
 			</div>
+		</div>
+	</form>
+
+	<div class="row">
+		<div class="col-lg-12 section-divider"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-12">
+			<h3>Delete Files</h3>
+		</div>
+	</div>
+
+
+<?php
+	// Get all active uploaded files
+	$sel_all_uploads_q2 = "
+		SELECT h.ID, h.UploadDate, h.FileName, h.LinkName, h.PayPlan,
+			h.Category, u.firstName, u.lastName
+		FROM hrodt.hiring_appt_upload_history h
+		JOIN secure_login.users u
+		ON h.UserID = u.id
+		WHERE h.Active = 1
+		ORDER BY h.UploadDate DESC
+	";
+	if (!$stmt = $conn->prepare($sel_all_uploads_q2)){
+		echo 'Prepare failed: (' . $conn->errno . ') ' . $conn->error . '<br />';
+	} else{
+		$stmt->execute();
+		$stmt->store_result();
+		$stmt->bind_result($q2_fileID, $q2_uploadDate, $q2_fileName, $q2_linkName, $q2_payPlan, $q2_category, $q2_firstName, $q2_lastName);
+		$stmt->fetch();
+	}
+?>
+
+	<form
+		name="editUpload-form"
+		id="editUpload-form"
+		role="form"
+		method="post"
+		action="./content/act_deleteUpload.php">
+
+		<input type="hidden" name="fileID" id="fileID" value="" />
+
+		<div class="row">
+			<table id="uploadedFiles-table" class="table table-striped">
+				<thead>
+					<tr>
+						<th>Link Name</th>
+						<th>Filename</th>
+						<th>Pay Plan</th>
+						<th>Category</th>
+						<th>Upload Date</th>
+						<th>Uploaded By</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+						// For each uploaded active file
+						while ($stmt->fetch()) {
+							$fileName_edited = preg_replace("/_\d+.pdf$/", "", $q2_fileName) . ".pdf"; 
+					?>
+					<tr>
+						<td><?= $q2_linkName ?></td>
+						<td><?= $fileName_edited ?></td>
+						<td><?= convertPayPlan($q2_payPlan, "pay_levels") ?></td>
+						<td><?= convertCategory($q2_category) ?></td>
+						<td><?= date('n/j/Y', strtotime($q2_uploadDate)) ?></td>
+						<td><?= $q2_firstName . ' ' . $q2_lastName ?></td>
+						<td>
+							<button
+								type="button"
+								id="file_<?= $q2_fileID ?>"
+								class="btn btn-danger delete-btn"
+								data-toggle="modal"
+								data-target="#confirmDelete"
+								data-title="Delete File"
+								data-message="Are you sure you want to delete this file?<br /><b><?= $fileName_edited ?></b>">
+
+								<span class="glyphicon glyphicon-trash"></span> Delete
+							</button>
+						</td>
+					</tr>
+					<?php
+						}
+					?>
+					
+				</tbody>
+			</table>
 		</div>
 	</form>
 </div>
