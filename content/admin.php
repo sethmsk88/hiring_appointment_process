@@ -1,6 +1,8 @@
 <?php
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/bootstrap/apps/shared/db_connect.php';
 
+	require_once './includes/delete_confirm.php'; // confirm modal
+
 	$categories = array(0,1,2);
 	$mostRecentUploads = array(); // category => array(uploadDate, fullName)
 
@@ -184,7 +186,7 @@
 <?php
 	// Get all active uploaded files
 	$sel_all_uploads_q2 = "
-		SELECT h.UploadDate, h.FileName, h.LinkName, h.PayPlan,
+		SELECT h.ID, h.UploadDate, h.FileName, h.LinkName, h.PayPlan,
 			h.Category, u.firstName, u.lastName
 		FROM hrodt.hiring_appt_upload_history h
 		JOIN secure_login.users u
@@ -197,44 +199,66 @@
 	} else{
 		$stmt->execute();
 		$stmt->store_result();
-		$stmt->bind_result($q2_uploadDate, $q2_fileName, $q2_linkName, $q2_payPlan, $q2_category, $q2_firstName, $q2_lastName);
+		$stmt->bind_result($q2_fileID, $q2_uploadDate, $q2_fileName, $q2_linkName, $q2_payPlan, $q2_category, $q2_firstName, $q2_lastName);
 		$stmt->fetch();
 	}
 ?>
 
-	<div class="row">
-		<table id="uploadedFiles-table" class="table table-striped">
-			<thead>
-				<tr>
-					<th>Link Name</th>
-					<th>Filename</th>
-					<th>Pay Plan</th>
-					<th>Category</th>
-					<th>Upload Date</th>
-					<th>Uploaded By</th>
-					<th>Actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php
-					// For each uploaded active file
-					while ($stmt->fetch()) {
-						$fileName_edited = preg_replace("/_\d+.pdf$/", "", $q2_fileName) . ".pdf"; 
-				?>
-				<tr>
-					<td><?= $q2_linkName ?></td>
-					<td><?= $fileName_edited ?></td>
-					<td><?= convertPayPlan($q2_payPlan, "pay_levels") ?></td>
-					<td><?= convertCategory($q2_category) ?></td>
-					<td><?= date('n/j/Y', strtotime($q2_uploadDate)) ?></td>
-					<td><?= $q2_firstName . ' ' . $q2_lastName ?></td>
-					<td>Delete</td>
-				</tr>
-				<?php
-					}
-				?>
-				
-			</tbody>
-		</table>
-	</div>
+	<form
+		name="editUpload-form"
+		id="editUpload-form"
+		role="form"
+		method="post"
+		action="./content/act_deleteUpload.php">
+
+		<input type="hidden" name="fileID" id="fileID" value="" />
+
+		<div class="row">
+			<table id="uploadedFiles-table" class="table table-striped">
+				<thead>
+					<tr>
+						<th>Link Name</th>
+						<th>Filename</th>
+						<th>Pay Plan</th>
+						<th>Category</th>
+						<th>Upload Date</th>
+						<th>Uploaded By</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php
+						// For each uploaded active file
+						while ($stmt->fetch()) {
+							$fileName_edited = preg_replace("/_\d+.pdf$/", "", $q2_fileName) . ".pdf"; 
+					?>
+					<tr>
+						<td><?= $q2_linkName ?></td>
+						<td><?= $fileName_edited ?></td>
+						<td><?= convertPayPlan($q2_payPlan, "pay_levels") ?></td>
+						<td><?= convertCategory($q2_category) ?></td>
+						<td><?= date('n/j/Y', strtotime($q2_uploadDate)) ?></td>
+						<td><?= $q2_firstName . ' ' . $q2_lastName ?></td>
+						<td>
+							<button
+								type="button"
+								id="file_<?= $q2_fileID ?>"
+								class="btn btn-danger delete-btn"
+								data-toggle="modal"
+								data-target="#confirmDelete"
+								data-title="Delete File"
+								data-message="Are you sure you want to delete this file?<br /><b><?= $fileName_edited ?></b>">
+
+								<span class="glyphicon glyphicon-trash"></span> Delete
+							</button>
+						</td>
+					</tr>
+					<?php
+						}
+					?>
+					
+				</tbody>
+			</table>
+		</div>
+	</form>
 </div>

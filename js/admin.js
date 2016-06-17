@@ -86,4 +86,34 @@ $(document).ready(function(){
 		});
 
 	});
+
+	// This was part of my attempt to reload the table using a JSON file
+	// Apply DataTable features to table
+	/*
+	$table = $('#uploadedFiles-table').DataTable();
+
+	// Submit form using AJAX
+	$('#editUpload-form').submit(function(e) {
+		e.preventDefault();
+
+		$form = $(this);
+
+		$.ajax({
+			url: './content/act_deleteUpload.php',
+			type: 'post',
+			data: $form.serialize(),
+			success: function(response) {
+				// Apply DataTable features to table
+				//$('#uploadedFiles-table').DataTable({"json":response});
+				//$table.ajax.url('./data/all_active.json').load();
+			}
+		});
+		// confirm delete action
+		
+
+	});*/
+
+
 });
+
+
