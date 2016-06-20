@@ -60,6 +60,7 @@
 		// Get fileID from buttonID
 		$fileID = $buttonID.match(/\d+$/)[0];
 
+		// Set hidden input value
 		$('#fileID').val($fileID);
 		
 		$(this).data('form').submit();

@@ -7,8 +7,6 @@ require_once "../includes/functions.php";
 // Start session or regenerate session id
 sec_session_start();
 
-echo '<code>' . var_dump($_POST) . '</code>';
-
 // if the delete button was clicked
 if (isset($_POST['fileID'])) {
 

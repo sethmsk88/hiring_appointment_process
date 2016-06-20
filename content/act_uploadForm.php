@@ -105,12 +105,12 @@ if ($uploadType > -1 && isset($_POST['payPlan'])){
 
 		// Insert History
 		$insert_uploadHistory_sql = "
-			INSERT INTO hrodt.hiring_appt_upload_history (UploadDate, FileName, PayPlan, Category, UserID)
-			VALUES (NOW(),?,?,?,?)
+			INSERT INTO hrodt.hiring_appt_upload_history (UploadDate, FileName, LinkName, PayPlan, Category, UserID)
+			VALUES (NOW(),?,?,?,?,?)
 		";
 		if (!$stmt = $conn->prepare($insert_uploadHistory_sql)) {
 			$json_response['errors'] = 'Prepare failed: (' . $conn->errno . ') ' . $conn->error . '<br />';
-		} else if (!$stmt->bind_param("ssii",
+		} else if (!$stmt->bind_param("sssii",
 			$fileName, $payPlan_numeric, $uploadType, $_SESSION['user_id'])){
 			$json_response['errors'] = 'Binding parameters failed (' . $stmt->errno . ') ' . $stmt->error . '<br />';
 		} else if (!$stmt->execute()) {

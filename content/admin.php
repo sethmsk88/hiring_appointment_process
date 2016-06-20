@@ -37,10 +37,9 @@
 <script src="./js/admin.js"></script>
 
 <div class="container">
-
 	<div class="row">
 		<div class="col-lg-12">
-			<h3>Update Files</h3>
+			<h3>Upload Files</h3>
 			<span class="light-text">Select the Pay Plan for which you would like to upload files.</span>
 		</div>
 	</div>
@@ -215,7 +214,7 @@
 
 	<div class="row">
 		<div class="col-lg-12">
-			<h3>Delete Files</h3>
+			<h3>Edit Files</h3>
 		</div>
 	</div>
 
