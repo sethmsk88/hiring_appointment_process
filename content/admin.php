@@ -71,11 +71,22 @@
 		<div id="ajax_uploadResponse">
 			<!-- To be filled by AJAX -->
 		</div>
+		<br />
 
 		<div class="form-group">
 			<div class="row">
 				<div class="col-lg-5">
-					<label for="upload-processSteps">Process Steps</label><br />
+					<label for="linkName-processSteps">Process Steps</label><br />
+					<input
+						type="text"
+						name="linkName-processSteps"
+						class="form-control linkName-input"
+						placeholder="Link Name">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-5">
 					<div class="input-group">
 						<span class="input-group-btn">
 							<span class="btn btn-primary btn-file">
@@ -105,11 +116,22 @@
 				</div>
 			</div>
 		</div>
+		<br />
 
 		<div class="form-group">
 			<div class="row">
 				<div class="col-lg-5">
-					<label for="upload-checklist">Checklist</label><br />
+					<label for="linkName-checklist">Checklist</label><br />
+					<input
+						type="text"
+						name="linkName-checklist"
+						class="form-control linkName-input"
+						placeholder="Link Name">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-5">
 					<div class="input-group">
 						<span class="input-group-btn">
 							<span class="btn btn-primary btn-file">
@@ -139,11 +161,23 @@
 				</div>
 			</div>
 		</div>
+		<br />
+	
 
 		<div class="form-group">
 			<div class="row">
 				<div class="col-lg-5">
-					<label for="upload-formsPacket">Forms Packet</label><br />
+					<label for="linkName-forms">Forms Packet</label><br />
+					<input
+						type="text"
+						name="linkName-forms"
+						class="form-control linkName-input"
+						placeholder="Link Name">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-5">
 					<div class="input-group">
 						<span class="input-group-btn">
 							<span class="btn btn-primary btn-file">

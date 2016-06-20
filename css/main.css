@@ -106,6 +106,10 @@ a.btn{
 	border-bottom: 2px solid #DDDDDD;
 }
 
+.linkName-input {
+	margin-bottom: 4px;
+}
+
 
 /* Style rules for file upload input */
 .btn-file{
