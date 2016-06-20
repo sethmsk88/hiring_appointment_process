@@ -203,7 +203,6 @@
 		$stmt->execute();
 		$stmt->store_result();
 		$stmt->bind_result($q2_fileID, $q2_uploadDate, $q2_fileName, $q2_linkName, $q2_payPlan, $q2_category, $q2_firstName, $q2_lastName);
-		$stmt->fetch();
 	}
 ?>
 
