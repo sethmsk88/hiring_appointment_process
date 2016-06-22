@@ -83,8 +83,10 @@
 				<li class="active"><a data-toggle="tab" href="#ops-tab" class="tab_title">OPS</a></li>
 				<li><a data-toggle="tab" href="#usps-tab" class="tab_title">USPS</a></li>
 				<li><a data-toggle="tab" href="#ap-tab" class="tab_title">A&amp;P</a></li>
-				<li><a data-toggle="tab" href="#exec-tab" class="tab_title">Exec</a></li>
-				<li><a data-toggle="tab" href="#fac-tab" class="tab_title">Fac</a></li>
+				<?php if ($loggedIn) { // INTERNAL ONLY ?>
+					<li><a data-toggle="tab" href="#exec-tab" class="tab_title">Exec</a></li>
+					<li><a data-toggle="tab" href="#fac-tab" class="tab_title">Fac</a></li>
+				<?php } ?>
 			</ul>
 
 			<div class="tab-content myTabs">
@@ -332,32 +334,80 @@
 				</div>
 				
 				<!-- Exec Tab -->
-				<div id="exec-tab" class="tab-pane fade">
-					
-					<!-- Process Steps -->
-					<div class="row">
-						<div class="col-sm-7 col-md-6">
-							<div id="collapse-group-9" class="panel-group">
-								<div class="panel">
-									<div class="panel-heading">
-										<a
-											data-toggle="collapse"
-											data-parent="#collapse-group-9"
-											href="#collapse-9">
-											Process Steps
-										</a>
-									</div>
-									<div id="collapse-9" class="panel-collapse collapse">
-										<div class="panel-body">
-											<?php
-												// Create a link for each file in this category and pay plan
-												$links = getFileLinks(0, 'exec', $fileNames_matrix);
-												$popover_content = "";
+				<?php if ($loggedIn) { // INTERNAL ONLY ?>
+					<div id="exec-tab" class="tab-pane fade">
+						
+						<!-- Process Steps -->
+						<div class="row">
+							<div class="col-sm-7 col-md-6">
+								<div id="collapse-group-9" class="panel-group">
+									<div class="panel">
+										<div class="panel-heading">
+											<a
+												data-toggle="collapse"
+												data-parent="#collapse-group-9"
+												href="#collapse-9">
+												Process Steps
+											</a>
+										</div>
+										<div id="collapse-9" class="panel-collapse collapse">
+											<div class="panel-body">
+												<?php
+													// Create a link for each file in this category and pay plan
+													$links = getFileLinks(0, 'exec', $fileNames_matrix);
+													$popover_content = "";
 
-												foreach ($links as $linkName => $linkPath){
-													echo '<a href="' . $linkPath . '" target="_blank">' . $linkName . '</a><br />';
-												}
-											?>
+													foreach ($links as $linkName => $linkPath){
+														echo '<a href="' . $linkPath . '" target="_blank">' . $linkName . '</a><br />';
+													}
+												?>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<!-- Forms -->
+						<div class="row">
+							<div class="col-sm-7 col-md-6">
+								<div id="collapse-group-10" class="panel-group">
+									<div class="panel">
+										<div class="panel-heading">
+											<a
+												data-toggle="collapse"
+												data-parent="#collapse-group-10"
+												href="#collapse-10">
+												Forms
+											</a>
+										</div>
+										<div id="collapse-10" class="panel-collapse collapse">
+											<div class="panel-body">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<!-- Checklist -->
+						<div class="row">
+							<div class="col-sm-7 col-md-6">
+								<div id="collapse-group-11" class="panel-group">
+									<div class="panel">
+										<div class="panel-heading">
+											<a
+												data-toggle="collapse"
+												data-parent="#collapse-group-11"
+												href="#collapse-11">
+												Checklist
+											</a>
+										</div>
+										<div id="collapse-11" class="panel-collapse collapse">
+											<div class="panel-body">
+											</div>
 										</div>
 									</div>
 								</div>
@@ -365,133 +415,87 @@
 						</div>
 					</div>
 
+					<!-- Fac Tab -->
+					<div id="fac-tab" class="tab-pane fade">
 
-					<!-- Forms -->
-					<div class="row">
-						<div class="col-sm-7 col-md-6">
-							<div id="collapse-group-10" class="panel-group">
-								<div class="panel">
-									<div class="panel-heading">
-										<a
-											data-toggle="collapse"
-											data-parent="#collapse-group-10"
-											href="#collapse-10">
-											Forms
-										</a>
+						<!-- Process Steps -->
+						<div class="row">
+							<div class="col-sm-7 col-md-6">
+								<div id="collapse-group-12" class="panel-group">
+									<div class="panel">
+										<div class="panel-heading">
+											<a
+												data-toggle="collapse"
+												data-parent="#collapse-group-12"
+												href="#collapse-12">
+												Process Steps
+											</a>
+										</div>
+										<div id="collapse-12" class="panel-collapse collapse">
+											<div class="panel-body">
+												<?php
+													// Create a link for each file in this category and pay plan
+													$links = getFileLinks(0, 'fac', $fileNames_matrix);
+													$popover_content = "";
+
+													foreach ($links as $linkName => $linkPath){
+														echo '<a href="' . $linkPath . '" target="_blank">' . $linkName . '</a><br />';
+													}
+												?>
+											</div>
+										</div>
 									</div>
-									<div id="collapse-10" class="panel-collapse collapse">
-										<div class="panel-body">
+								</div>
+							</div>
+						</div>
+
+
+						<!-- Forms -->
+						<div class="row">
+							<div class="col-sm-7 col-md-6">
+								<div id="collapse-group-13" class="panel-group">
+									<div class="panel">
+										<div class="panel-heading">
+											<a
+												data-toggle="collapse"
+												data-parent="#collapse-group-13"
+												href="#collapse-13">
+												Forms
+											</a>
+										</div>
+										<div id="collapse-13" class="panel-collapse collapse">
+											<div class="panel-body">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<!-- Checklist -->
+						<div class="row">
+							<div class="col-sm-7 col-md-6">
+								<div id="collapse-group-14" class="panel-group">
+									<div class="panel">
+										<div class="panel-heading">
+											<a
+												data-toggle="collapse"
+												data-parent="#collapse-group-14"
+												href="#collapse-14">
+												Checklist
+											</a>
+										</div>
+										<div id="collapse-14" class="panel-collapse collapse">
+											<div class="panel-body">
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
-
-					<!-- Checklist -->
-					<div class="row">
-						<div class="col-sm-7 col-md-6">
-							<div id="collapse-group-11" class="panel-group">
-								<div class="panel">
-									<div class="panel-heading">
-										<a
-											data-toggle="collapse"
-											data-parent="#collapse-group-11"
-											href="#collapse-11">
-											Checklist
-										</a>
-									</div>
-									<div id="collapse-11" class="panel-collapse collapse">
-										<div class="panel-body">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Fac Tab -->
-				<div id="fac-tab" class="tab-pane fade">
-
-					<!-- Process Steps -->
-					<div class="row">
-						<div class="col-sm-7 col-md-6">
-							<div id="collapse-group-12" class="panel-group">
-								<div class="panel">
-									<div class="panel-heading">
-										<a
-											data-toggle="collapse"
-											data-parent="#collapse-group-12"
-											href="#collapse-12">
-											Process Steps
-										</a>
-									</div>
-									<div id="collapse-12" class="panel-collapse collapse">
-										<div class="panel-body">
-											<?php
-												// Create a link for each file in this category and pay plan
-												$links = getFileLinks(0, 'fac', $fileNames_matrix);
-												$popover_content = "";
-
-												foreach ($links as $linkName => $linkPath){
-													echo '<a href="' . $linkPath . '" target="_blank">' . $linkName . '</a><br />';
-												}
-											?>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-					<!-- Forms -->
-					<div class="row">
-						<div class="col-sm-7 col-md-6">
-							<div id="collapse-group-13" class="panel-group">
-								<div class="panel">
-									<div class="panel-heading">
-										<a
-											data-toggle="collapse"
-											data-parent="#collapse-group-13"
-											href="#collapse-13">
-											Forms
-										</a>
-									</div>
-									<div id="collapse-13" class="panel-collapse collapse">
-										<div class="panel-body">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-					<!-- Checklist -->
-					<div class="row">
-						<div class="col-sm-7 col-md-6">
-							<div id="collapse-group-14" class="panel-group">
-								<div class="panel">
-									<div class="panel-heading">
-										<a
-											data-toggle="collapse"
-											data-parent="#collapse-group-14"
-											href="#collapse-14">
-											Checklist
-										</a>
-									</div>
-									<div id="collapse-14" class="panel-collapse collapse">
-										<div class="panel-body">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				<?php } // END INTERNAL ONLY ?> 
 			</div>
 		</div>
 	</div>
