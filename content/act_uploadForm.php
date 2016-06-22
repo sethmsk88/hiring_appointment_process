@@ -127,12 +127,6 @@ if ($uploadType > -1 && isset($_POST['payPlan'])){
 		// Append success message to response
 		$json_response['success_msg'] = '<div class="alert alert-success"><strong>Success!</strong> File "' . $fileName . '" was successfully uploaded.</div>';
 
-		// Append upload category to response
-		$json_response['category'] = $response_ids[$uploadType];
-
-		// Append last updated message to response
-		$json_response['last-updated'] = "Last updated: " . date('n/j/Y g:ia') . ' by ' . $_SESSION['firstName'] . ' ' . $_SESSION['lastName'];
-
 	} // End if upload success
 } else { // End if file was posted to page
 	$json_response['errors'] = '<div class="alert alert-danger"><strong>Error!</strong> File was NOT uploaded<br />A File must be selected</div>';

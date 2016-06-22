@@ -62,11 +62,6 @@ $(document).ready(function(){
 				// Populate upload response div
 				$('#ajax_uploadResponse').html($uploadResponse);
 
-				// Populate last updated div
-				if (response.hasOwnProperty('category')){
-					$('#' + response['category']).html(response['last-updated']);
-				}
-
 				// Clear the upload input fields
 				$('input[type="file"]').each(function(){
 
