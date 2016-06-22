@@ -1,0 +1,5 @@
+/* Set the max width of the 2nd column in the table */
+#uploadedFiles-table > tbody > tr > td:nth-child(2) {
+	max-width: 450px;
+	overflow: hidden;
+}

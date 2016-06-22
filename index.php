@@ -21,6 +21,7 @@
     <!-- Linked stylesheets -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link href="/bootstrap/scripts/DataTables-1.10.7/media/css/jquery.dataTables.css" rel="stylesheet">
     <link href="../css/navbar-custom1.css" rel="stylesheet">
     <link href="../css/master.css" rel="stylesheet">
     <link href="./css/main.css" rel="stylesheet">
@@ -32,6 +33,7 @@
     <script src="/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Included Scripts -->
+    <script src="/bootstrap/scripts/DataTables-1.10.7/media/js/jquery.datatables.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/login.js"></script>
     <script src="/bootstrap/js/sha512.js"></script>

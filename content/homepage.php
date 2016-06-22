@@ -12,11 +12,10 @@
 			'forms/'
 		);
 
+		$links = array();
+
 		// Only return a link to the file if a fileName exists in the matrix
-		if (count($fileNames_matrix[$category][$payPlan]) === 0){
-			return array('#');
-		} else{
-			$links = array();
+		if (count($fileNames_matrix[$category][$payPlan]) !== 0){			
 
 			// Add each link to links array
 			foreach ($fileNames_matrix[$category][$payPlan] as $fileInfo){
@@ -25,9 +24,8 @@
 
 				// $linkName = preg_replace("/_\d+.pdf$/", "", $fileName); // remove digits from end of fileName
 			}
-
-			return $links;
 		}
+		return $links;
 	}
 
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/bootstrap/apps/shared/db_connect.php';
@@ -50,6 +48,11 @@
 	} else{
 
 		// Populate fileNames matrix
+		// ($category =>
+		//		($payPlan =>
+		//			('fileName'=>$fileName, 'linkName'=>$linkName)
+		//		)
+		// )
 		foreach ($categories as $category){
 			foreach ($payPlans as $payPlan){
 				$stmt->bind_param("is", $category, $payPlan);
@@ -61,6 +64,11 @@
 
 				// Add each file for this payPlan and category to the matrix
 				while ($stmt->fetch()){
+
+					// if linkName is blank, make linkName = shortened fileName
+					if (strlen($linkName) === 0)
+						$linkName = preg_replace("/_\d+.pdf$/", "", $fileName); // remove digits from end of fileName
+
 					array_push($fileNames_matrix[$category][$payPlan], array('fileName' => $fileName, 'linkName' => $linkName));
 				}
 			}
@@ -99,6 +107,15 @@
 									</div>
 									<div id="collapse-0" class="panel-collapse collapse">
 										<div class="panel-body">
+											<?php
+												// Create a link for each file in this category and pay plan
+												$links = getFileLinks(0, 'ops', $fileNames_matrix);
+												$popover_content = "";
+
+												foreach ($links as $linkName => $linkPath){
+													echo '<a href="' . $linkPath . '" target="_blank">' . $linkName . '</a><br />';
+												}
+											?>
 										</div>
 									</div>
 								</div>
@@ -253,7 +270,7 @@
 										<div class="panel-body">
 											<?php
 												// Create a link for each file in this category and pay plan
-												$links = getFileLinks(0, 'usps', $fileNames_matrix);
+												$links = getFileLinks(0, 'ap', $fileNames_matrix);
 												$popover_content = "";
 
 												foreach ($links as $linkName => $linkPath){
@@ -332,6 +349,15 @@
 									</div>
 									<div id="collapse-9" class="panel-collapse collapse">
 										<div class="panel-body">
+											<?php
+												// Create a link for each file in this category and pay plan
+												$links = getFileLinks(0, 'exec', $fileNames_matrix);
+												$popover_content = "";
+
+												foreach ($links as $linkName => $linkPath){
+													echo '<a href="' . $linkPath . '" target="_blank">' . $linkName . '</a><br />';
+												}
+											?>
 										</div>
 									</div>
 								</div>
@@ -404,6 +430,15 @@
 									</div>
 									<div id="collapse-12" class="panel-collapse collapse">
 										<div class="panel-body">
+											<?php
+												// Create a link for each file in this category and pay plan
+												$links = getFileLinks(0, 'fac', $fileNames_matrix);
+												$popover_content = "";
+
+												foreach ($links as $linkName => $linkPath){
+													echo '<a href="' . $linkPath . '" target="_blank">' . $linkName . '</a><br />';
+												}
+											?>
 										</div>
 									</div>
 								</div>

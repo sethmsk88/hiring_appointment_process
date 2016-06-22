@@ -60,6 +60,28 @@ function convertPayPlan($payPlan, $format) {
 			case 'fac':
 				$convertedPayPlan = 'Faculty';
 				break;
+			case 'ops':
+				$convertedPayPlan = 'OPS';
+				break;
+		}
+	}
+	else if ($format == 'pay_levels_2') {
+		switch ($payPlan) {
+			case 'usps':
+				$convertedPayPlan = 'USPS';
+				break;
+			case 'ap':
+				$convertedPayPlan = 'A&P';
+				break;
+			case 'exec':
+				$convertedPayPlan = 'Exec';
+				break;
+			case 'fac':
+				$convertedPayPlan = 'Fac';
+				break;
+			case 'ops':
+				$convertedPayPlan = 'OPS';
+				break;
 		}
 	}
 	else if ($format == 'long') {
@@ -163,6 +185,24 @@ function convertFLSA($flsa, $format) {
 		}
 	}
 	return $convertedFLSA;
+}
+
+function convertCategory($category)
+{
+	$convertedCategory = "";
+	switch ($category) {
+		case 0:
+			$convertedCategory = "Process Steps";
+			break;
+		case 1:
+			$convertedCategory = "Checklist";
+			break;
+		case 2:
+			$convertedCategory = "Forms";
+			break;
+	}
+
+	return $convertedCategory;
 }
 
 function getFLSA(&$conn, $jobCode, $payPlan, $flsa_status) {

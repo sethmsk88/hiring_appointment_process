@@ -69,7 +69,11 @@ a.btn{
 	padding-bottom: 8px;
 }
 
+.section-divider {
+	margin-top:12px;
 
+	border-top:2px solid #DDD;
+}
 
 
 
@@ -88,6 +92,22 @@ a.btn{
 .note{
 	color:#FF1919;
 	font-style:italic;
+}
+
+.table td:first-child {
+	border-left: 2px solid #DDDDDD;
+}
+
+.table td:last-child {
+	border-right: 2px solid #DDDDDD;
+}
+
+.table tr:last-child {
+	border-bottom: 2px solid #DDDDDD;
+}
+
+.linkName-input {
+	margin-bottom: 4px;
 }
 
 

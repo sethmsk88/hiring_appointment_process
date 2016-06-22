@@ -62,11 +62,6 @@ $(document).ready(function(){
 				// Populate upload response div
 				$('#ajax_uploadResponse').html($uploadResponse);
 
-				// Populate last updated div
-				if (response.hasOwnProperty('category')){
-					$('#' + response['category']).html(response['last-updated']);
-				}
-
 				// Clear the upload input fields
 				$('input[type="file"]').each(function(){
 
@@ -86,4 +81,34 @@ $(document).ready(function(){
 		});
 
 	});
+
+	// This was part of my attempt to reload the table using a JSON file
+	// Apply DataTable features to table
+	/*
+	$table = $('#uploadedFiles-table').DataTable();
+
+	// Submit form using AJAX
+	$('#editUpload-form').submit(function(e) {
+		e.preventDefault();
+
+		$form = $(this);
+
+		$.ajax({
+			url: './content/act_deleteUpload.php',
+			type: 'post',
+			data: $form.serialize(),
+			success: function(response) {
+				// Apply DataTable features to table
+				//$('#uploadedFiles-table').DataTable({"json":response});
+				//$table.ajax.url('./data/all_active.json').load();
+			}
+		});
+		// confirm delete action
+		
+
+	});*/
+
+
 });
+
+
