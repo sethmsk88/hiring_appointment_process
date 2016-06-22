@@ -2,6 +2,7 @@
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/bootstrap/apps/shared/db_connect.php';
 
 	require_once './includes/delete_confirm.php'; // confirm modal
+	require_once './includes/edit_modal.php'; // edit modal
 
 	$categories = array(0,1,2);
 	$mostRecentUploads = array(); // category => array(uploadDate, fullName)
@@ -258,7 +259,8 @@
 						<th>Category</th>
 						<th>Upload Date</th>
 						<th>Uploaded By</th>
-						<th>Actions</th>
+						<th></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -268,22 +270,31 @@
 							$fileName_edited = preg_replace("/_\d+.pdf$/", "", $q2_fileName) . ".pdf"; 
 					?>
 					<tr>
-						<td><?= $q2_linkName ?></td>
+						<td class="linkName-cell"><?= $q2_linkName ?></td>
 						<td><?= $fileName_edited ?></td>
-						<td><?= convertPayPlan($q2_payPlan, "pay_levels") ?></td>
-						<td><?= convertCategory($q2_category) ?></td>
+						<td class="payPlan-cell"><?= convertPayPlan($q2_payPlan, "pay_levels_2") ?></td>
+						<td class="category-cell"><?= convertCategory($q2_category) ?></td>
 						<td><?= date('n/j/Y', strtotime($q2_uploadDate)) ?></td>
 						<td><?= $q2_firstName . ' ' . $q2_lastName ?></td>
 						<td>
 							<button
 								type="button"
+								id="editFile_<?= $q2_fileID ?>"
+								class="btn btn-info btn-sm"
+								data-toggle="modal"
+								data-target="#editModal">
+								<span class="glyphicon glyphicon-edit"></span> Edit
+							</button>
+						</td>
+						<td>
+							<button
+								type="button"
 								id="file_<?= $q2_fileID ?>"
-								class="btn btn-danger delete-btn"
+								class="btn btn-danger btn-sm delete-btn"
 								data-toggle="modal"
 								data-target="#confirmDelete"
 								data-title="Delete File"
 								data-message="Are you sure you want to delete this file?<br /><b><?= $fileName_edited ?></b>">
-
 								<span class="glyphicon glyphicon-trash"></span> Delete
 							</button>
 						</td>

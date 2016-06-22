@@ -65,6 +65,25 @@ function convertPayPlan($payPlan, $format) {
 				break;
 		}
 	}
+	else if ($format == 'pay_levels_2') {
+		switch ($payPlan) {
+			case 'usps':
+				$convertedPayPlan = 'USPS';
+				break;
+			case 'ap':
+				$convertedPayPlan = 'A&P';
+				break;
+			case 'exec':
+				$convertedPayPlan = 'Exec';
+				break;
+			case 'fac':
+				$convertedPayPlan = 'Fac';
+				break;
+			case 'ops':
+				$convertedPayPlan = 'OPS';
+				break;
+		}
+	}
 	else if ($format == 'long') {
 		switch ($payPlan) {
 			case 'usps':

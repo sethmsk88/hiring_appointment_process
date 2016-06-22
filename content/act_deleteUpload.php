@@ -46,9 +46,6 @@ if (isset($_POST['fileID'])) {
 		}
 	}
 
-	// Redirect back to admin page
-	header("Location: " . APP_PATH . "?page=admin");
-
 	// This is part of my attempt to reload the DataTable with a JSON file
 	// Output response, which is the updated table data in JSON format
 	/*
@@ -73,4 +70,8 @@ if (isset($_POST['fileID'])) {
 
 	echo json_encode($tableData);*/
 }
+
+// Redirect back to admin page
+header("Location: " . APP_PATH . "?page=admin");
+
 ?>
