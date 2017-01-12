@@ -170,6 +170,7 @@
 									</div>
 									<div id="collapse-2" class="panel-collapse collapse">
 										<div class="panel-body">
+											<a href="http://www.famu.edu/index.cfm?hr&Forms#N" target="_blank">New Employee Sign-Up Checklist</a><br />
 											<?php
 												// Create a link for each file in this category and pay plan
 												$links = getFileLinks(1, 'ops', $fileNames_matrix);
@@ -263,6 +264,7 @@
 									</div>
 									<div id="collapse-5" class="panel-collapse collapse">
 										<div class="panel-body">
+											<a href="http://www.famu.edu/index.cfm?hr&Forms#N" target="_blank">New Employee Sign-Up Checklist</a><br />
 											<?php
 												// Create a link for each file in this category and pay plan
 												$links = getFileLinks(1, 'usps', $fileNames_matrix);
@@ -355,6 +357,7 @@
 									</div>
 									<div id="collapse-8" class="panel-collapse collapse">
 										<div class="panel-body">
+											<a href="http://www.famu.edu/index.cfm?hr&Forms#N" target="_blank">New Employee Sign-Up Checklist</a><br />
 											<?php
 												// Create a link for each file in this category and pay plan
 												$links = getFileLinks(1, 'ap', $fileNames_matrix);
@@ -449,6 +452,7 @@
 										</div>
 										<div id="collapse-11" class="panel-collapse collapse">
 											<div class="panel-body">
+												<a href="http://www.famu.edu/index.cfm?hr&Forms#N" target="_blank">New Employee Sign-Up Checklist</a><br />
 												<?php
 													// Create a link for each file in this category and pay plan
 													$links = getFileLinks(1, 'exec', $fileNames_matrix);
@@ -542,6 +546,7 @@
 										</div>
 										<div id="collapse-14" class="panel-collapse collapse">
 											<div class="panel-body">
+												<a href="http://www.famu.edu/index.cfm?hr&Forms#N" target="_blank">New Employee Sign-Up Checklist</a><br />
 												<?php
 													// Create a link for each file in this category and pay plan
 													$links = getFileLinks(1, 'fac', $fileNames_matrix);
