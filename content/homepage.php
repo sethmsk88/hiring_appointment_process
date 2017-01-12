@@ -133,12 +133,15 @@
 							<div id="collapse-group-1" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
+									<!--
 										<a
 											data-toggle="collapse"
 											data-parent="#collapse-group-1"
 											href="#collapse-1">
 											Forms
 										</a>
+									-->
+									<a href="http://www.famu.edu/index.cfm?hr&Forms" target="_blank">Forms</a>
 									</div>
 									<div id="collapse-1" class="panel-collapse collapse">
 										<div class="panel-body">
@@ -214,12 +217,15 @@
 							<div id="collapse-group-4" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
+										<!--
 										<a
 											data-toggle="collapse"
 											data-parent="#collapse-group-4"
 											href="#collapse-4">
 											Forms
 										</a>
+										-->
+										<a href="http://www.famu.edu/index.cfm?hr&Forms" target="_blank">Forms</a>
 									</div>
 									<div id="collapse-4" class="panel-collapse collapse">
 										<div class="panel-body">
@@ -294,12 +300,15 @@
 							<div id="collapse-group-7" class="panel-group">
 								<div class="panel">
 									<div class="panel-heading">
+										<!--
 										<a
 											data-toggle="collapse"
 											data-parent="#collapse-group-7"
 											href="#collapse-7">
 											Forms
 										</a>
+										-->
+										<a href="http://www.famu.edu/index.cfm?hr&Forms" target="_blank">Forms</a>
 									</div>
 									<div id="collapse-7" class="panel-collapse collapse">
 										<div class="panel-body">
@@ -376,12 +385,15 @@
 								<div id="collapse-group-10" class="panel-group">
 									<div class="panel">
 										<div class="panel-heading">
+											<!--
 											<a
 												data-toggle="collapse"
 												data-parent="#collapse-group-10"
 												href="#collapse-10">
 												Forms
 											</a>
+											-->
+											<a href="http://www.famu.edu/index.cfm?hr&Forms" target="_blank">Forms</a>
 										</div>
 										<div id="collapse-10" class="panel-collapse collapse">
 											<div class="panel-body">
@@ -457,12 +469,15 @@
 								<div id="collapse-group-13" class="panel-group">
 									<div class="panel">
 										<div class="panel-heading">
+											<!--
 											<a
 												data-toggle="collapse"
 												data-parent="#collapse-group-13"
 												href="#collapse-13">
 												Forms
 											</a>
+											-->
+											<a href="http://www.famu.edu/index.cfm?hr&Forms" target="_blank">Forms</a>
 										</div>
 										<div id="collapse-13" class="panel-collapse collapse">
 											<div class="panel-body">
