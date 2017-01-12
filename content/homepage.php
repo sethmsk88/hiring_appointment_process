@@ -30,7 +30,7 @@
 
 	require_once $_SERVER['DOCUMENT_ROOT'] . '/bootstrap/apps/shared/db_connect.php';
 
-	$categories = array(0,1,2);
+	$categories = array(0,1,2); // 0 = Process Steps, 1 = Checklist, 2 = Forms
 	$payPlans = array('ap', 'exec', 'fac', 'ops', 'usps');
 	$fileNames_matrix = array(); // category => array(payPlan => array(linkName => fileName))
 
@@ -74,6 +74,8 @@
 			}
 		}
 	}
+
+
 ?>
 
 <div class="container">
@@ -168,6 +170,15 @@
 									</div>
 									<div id="collapse-2" class="panel-collapse collapse">
 										<div class="panel-body">
+											<?php
+												// Create a link for each file in this category and pay plan
+												$links = getFileLinks(1, 'ops', $fileNames_matrix);
+												$popover_content = "";
+
+												foreach ($links as $linkName => $linkPath){
+													echo '<a href="' . $linkPath . '" target="_blank">' . $linkName . '</a><br />';
+												}
+											?>
 										</div>
 									</div>
 								</div>
@@ -252,6 +263,15 @@
 									</div>
 									<div id="collapse-5" class="panel-collapse collapse">
 										<div class="panel-body">
+											<?php
+												// Create a link for each file in this category and pay plan
+												$links = getFileLinks(1, 'usps', $fileNames_matrix);
+												$popover_content = "";
+
+												foreach ($links as $linkName => $linkPath){
+													echo '<a href="' . $linkPath . '" target="_blank">' . $linkName . '</a><br />';
+												}
+											?>
 										</div>
 									</div>
 								</div>
@@ -335,6 +355,15 @@
 									</div>
 									<div id="collapse-8" class="panel-collapse collapse">
 										<div class="panel-body">
+											<?php
+												// Create a link for each file in this category and pay plan
+												$links = getFileLinks(1, 'ap', $fileNames_matrix);
+												$popover_content = "";
+
+												foreach ($links as $linkName => $linkPath){
+													echo '<a href="' . $linkPath . '" target="_blank">' . $linkName . '</a><br />';
+												}
+											?>
 										</div>
 									</div>
 								</div>
@@ -420,6 +449,15 @@
 										</div>
 										<div id="collapse-11" class="panel-collapse collapse">
 											<div class="panel-body">
+												<?php
+													// Create a link for each file in this category and pay plan
+													$links = getFileLinks(1, 'exec', $fileNames_matrix);
+													$popover_content = "";
+
+													foreach ($links as $linkName => $linkPath){
+														echo '<a href="' . $linkPath . '" target="_blank">' . $linkName . '</a><br />';
+													}
+												?>
 											</div>
 										</div>
 									</div>
@@ -504,6 +542,15 @@
 										</div>
 										<div id="collapse-14" class="panel-collapse collapse">
 											<div class="panel-body">
+												<?php
+													// Create a link for each file in this category and pay plan
+													$links = getFileLinks(1, 'fac', $fileNames_matrix);
+													$popover_content = "";
+
+													foreach ($links as $linkName => $linkPath){
+														echo '<a href="' . $linkPath . '" target="_blank">' . $linkName . '</a><br />';
+													}
+												?>
 											</div>
 										</div>
 									</div>

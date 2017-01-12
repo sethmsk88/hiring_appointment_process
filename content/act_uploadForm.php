@@ -29,7 +29,7 @@ $upload_payPlan_dirs = array(
 	4 => "usps/"
 );
 
-// Determine which subdirectory to put the file in 
+// Determine the subdirectory in which to put the file
 if (strlen($_FILES['upload-processSteps']['name']) > 0){
 	$uploadType = 0;
 } else if (strlen($_FILES['upload-checklist']['name']) > 0){
