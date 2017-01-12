@@ -95,7 +95,8 @@
 				<div id="ops-tab" class="tab-pane fade in active">
 			
 					<!-- Process Steps -->
-					<div class="row">
+					<!-- HIDDEN TEMPORARILY at the request of Terissa Brown -->
+					<div class="row hidden">
 						<div class="col-sm-7 col-md-6">
 							<div id="collapse-group-0" class="panel-group">
 								<div class="panel">
