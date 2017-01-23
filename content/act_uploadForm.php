@@ -63,9 +63,7 @@ if ($uploadType > -1 && isset($_POST['payPlan'])){
 	$fileName_exploded = explode('.', $fileName);
 	$fileExt = strtolower(end($fileName_exploded));
 
-	// Append timestamp to filename
-	$timeStamp = date("YmdHis"); // 1/2/2016 1:05:12pm = 20160102130512
-	$fileName = $fileName_exploded[0] . '_' . $timeStamp . '.' . $fileExt;
+	$fileName = make_unique_filename($fileName_exploded[0] . '.' . $fileExt, 'uploads/');
 
 	// Check to see if extension is valid
 	$extensions = array("pdf", "zip");

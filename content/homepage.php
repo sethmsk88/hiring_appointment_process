@@ -67,7 +67,7 @@
 
 					// if linkName is blank, make linkName = shortened fileName
 					if (strlen($linkName) === 0)
-						$linkName = preg_replace("/_\d+.pdf$/", "", $fileName); // remove digits from end of fileName
+						$linkName = $fileName;
 
 					array_push($fileNames_matrix[$category][$payPlan], array('fileName' => $fileName, 'linkName' => $linkName));
 				}
