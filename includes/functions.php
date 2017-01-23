@@ -493,4 +493,22 @@ function parseMoney($money) {
 	return preg_replace("/[^0-9.]/", "", $money);
 }
 
+// Return a filename that does not already exist in the uploads directory
+function make_unique_filename($fileName, $uploadsDir)
+{
+	if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/bootstrap/apps/hiring_appointment_process/" . $uploadsDir . $fileName)) {
+		$fileName_exploded = explode('.', $fileName);
+		$extension = array_pop($fileName_exploded);
+		$fileName_exploded[0] .= '_1'; // Append number to filename
+		array_push($fileName_exploded, $extension);
+		$fileName = implode('.', $fileName_exploded);
+
+		// Make sure filename is unique
+		while (file_exists($_SERVER['DOCUMENT_ROOT'] . "/bootstrap/apps/hiring_appointment_process/" . $uploadsDir . $fileName)) {
+			$fileName = increment_fileNumber($fileName);
+		}
+	}
+	return $fileName;
+}
+
 ?>

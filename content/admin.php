@@ -233,11 +233,10 @@
 					<?php
 						// For each uploaded active file
 						while ($stmt->fetch()) {
-							$fileName_edited = preg_replace("/_\d+.pdf$/", "", $q2_fileName) . ".pdf"; 
 					?>
 					<tr>
 						<td class="linkName-cell"><?= $q2_linkName ?></td>
-						<td><?= $fileName_edited ?></td>
+						<td><?= $q2_fileName ?></td>
 						<td class="payPlan-cell"><?= convertPayPlan($q2_payPlan, "pay_levels_2") ?></td>
 						<td class="category-cell"><?= convertCategory($q2_category) ?></td>
 						<td><?= date('n/j/Y', strtotime($q2_uploadDate)) ?></td>
@@ -260,7 +259,7 @@
 								data-toggle="modal"
 								data-target="#confirmDelete"
 								data-title="Delete File"
-								data-message="Are you sure you want to delete this file?<br /><b><?= $fileName_edited ?></b>">
+								data-message="Are you sure you want to delete this file?<br /><b><?= $q2_fileName ?></b>">
 								<span class="glyphicon glyphicon-trash"></span> Delete
 							</button>
 						</td>
