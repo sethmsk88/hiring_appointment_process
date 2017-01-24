@@ -66,7 +66,7 @@ if ($uploadType > -1 && isset($_POST['payPlan'])){
 	$fileName = make_unique_filename($fileName_exploded[0] . '.' . $fileExt, 'uploads/');
 
 	// Check to see if extension is valid
-	$extensions = array("pdf", "zip");
+	$extensions = array("pdf", "zip", "pptx", "ppt", "doc", "docx", "xls", "xlsx");
 	if (in_array($fileExt, $extensions) === false){
 		array_push($errors, "Invalid file type. Please choose a PDF or ZIP file.");
 	}
